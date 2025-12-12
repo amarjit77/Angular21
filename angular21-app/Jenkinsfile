@@ -36,7 +36,7 @@ pipeline
             steps {
                 echo 'Deploying build...'
                 // Add your deployment commands here
-                // Example:
+                // Example: 
                 // sh 'scp -r dist/ user@server:/var/www/html'
             }
         }
