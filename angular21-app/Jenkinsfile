@@ -1,32 +1,30 @@
-pipeline
-{
+pipeline {
     agent any
 
     tools {
-        nodejs "24.12.0"   // Use the Node version name you configured in Jenkins
+        nodejs "node18"    // Name of Node version configured in Jenkins
     }
 
-    stages
-    {
+    stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        //stage('Install Dependencies') {
-        //    steps {
-        //        sh 'npm install'
-        //    }
-        //}
+        stage('Install Packages') {
+            steps {
+                sh 'npm install'
+            }
+        }
 
-        stage('Build Angular 21 App pipleine') {
+        stage('Build Angular') {
             steps {
                 sh 'npm run build --prod'
             }
         }
 
-        stage('Archive Build Artifacts') {
+        stage('Archive Files') {
             steps {
                 archiveArtifacts artifacts: 'dist/**', fingerprint: true
             }
@@ -34,15 +32,12 @@ pipeline
 
         stage('Deploy') {
             steps {
-                echo 'Deploying build...'
-                // Add your deployment commands here
-                // Example: 
-                // sh 'scp -r dist/ user@server:/var/www/html'
+                echo "Deployment step here..."
             }
         }
     }
 
     triggers {
-        githubPush()   // Trigger when code is pushed
+        githubPush()
     }
 }
