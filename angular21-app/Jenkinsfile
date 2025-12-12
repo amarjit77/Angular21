@@ -10,7 +10,7 @@ pipeline
     {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/amarjit77/Angular21.git'
+                checkout scm
             }
         }
 
