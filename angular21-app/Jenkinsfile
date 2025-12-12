@@ -20,7 +20,7 @@ pipeline
         //    }
         //}
 
-        stage('Build Angular 21 App') {
+        stage('Build Angular 21 App pipleine') {
             steps {
                 sh 'npm run build --prod'
             }
