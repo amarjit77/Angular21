@@ -14,13 +14,13 @@ pipeline {
 
         stage('Install Packages') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Build Angular') {
             steps {
-                sh 'npm run build --prod'
+                sh 'npm run build'
             }
         }
 
